@@ -9,16 +9,16 @@ Breaking Bad App using React Spring and Context API. This app is published in Ve
 # Download - Clone:
 git clone https://github.com/ClaudioAP7/BreakingBad-App.ReactJS.Spring.git
 
-#Installation:
+# Installation:
 npm install
 
-#To Start Server:
+# To Start Server:
 npm start
 
-#To Start Dev-Server:
+# To Start Dev-Server:
 npm run dev-server
 
-#To Visit local App:
+# To Visit local App:
 localhost:3000/
 
-#Vercel Published link: https://breaking-bad-app-react-js-25yp1s4f0-claudiodev.vercel.app/
+# Vercel Published link: https://breaking-bad-app-react-js-25yp1s4f0-claudiodev.vercel.app/
