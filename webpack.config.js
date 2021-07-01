@@ -1,57 +1,61 @@
-const path = require('path')
+/* eslint-disable spaced-comment */
+/* eslint-disable comma-dangle */
+/* eslint-disable semi */
+/* eslint-disable quotes */
+const path = require("path");
 
 module.exports = {
-  mode: 'production',
-  entry: './src/index.js',
+  mode: "production",
+  entry: "./src/index.js",
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, "public"),
+    filename: "bundle.js",
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: "babel-loader",
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack']
+        use: ["@svgr/webpack"],
       },
       {
         test: /\.(gif|png|jep?g|ico)$/i,
         use: [
-          'file-loader?name=[name].[ext]',
+          "file-loader?name=[name].[ext]",
           {
-            loader: 'image-webpack-loader',
+            loader: "image-webpack-loader",
             options: {
               bypassOnDebug: true,
-              disable: true
-            }
-          }
-        ]
+              disable: true,
+            },
+          },
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [".js", ".jsx"],
   },
   performance: {
-    hints: process.env.NODE_ENV === 'production' ? 'error' : false,
+    hints: process.env.NODE_ENV === "production" ? "error" : false,
     maxEntrypointSize: 580000,
-    maxAssetSize: 580000
+    maxAssetSize: 580000,
   },
-  // devtool: 'eval-cheap-module-source-map',
-  devtool: 'source-map',
+  //devtool: 'eval-cheap-module-source-map',
+  devtool: "source-map",
   devServer: {
-    contentBase: path.join(__dirname, 'public')
-  }
-}
+    contentBase: path.join(__dirname, "public"),
+  },
+};
