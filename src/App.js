@@ -8,6 +8,7 @@ import CharactersContextProvider from './contexts/CharactersContext'
 import CounterDeathsContextProvider from './contexts/CounterDeathsContext'
 import QuoteContextProvider from './contexts/QuoteContext'
 import Loader from './components/common/Loader'
+import NotFound from './components/common/NotFound'
 
 import '../public/favicon.ico'
 import './assets/scss/layout.scss'
@@ -23,7 +24,6 @@ const Container = styled.div`
 const Characters = lazy(() => import('./components/characters/Characters'))
 const Quotes = lazy(() => import('./components/quotes/Quotes'))
 const CounterDeaths = lazy(() => import('./components/deaths/Counter-Deaths'))
-const NotFound = lazy(() => import('./components/common/NotFound'))
 
 const App = () => {
   const { location } = useRouter()
