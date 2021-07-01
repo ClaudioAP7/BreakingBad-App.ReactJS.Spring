@@ -65,9 +65,7 @@ const App = () => {
                     <Quotes />
                   </QuoteContextProvider>
                 </Route>
-                <Route path='*'>
-                  <NotFound />
-                </Route>
+                <Route component={NotFound} />
               </Suspense>
             </Switch>
           </BrowserRouter>
