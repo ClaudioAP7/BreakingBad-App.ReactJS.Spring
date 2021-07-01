@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react'
+import React from 'react'
 import { useTransition, animated } from 'react-spring'
 import { Switch, Route } from 'react-router-dom'
 import Header from './components/common/Header'
@@ -7,8 +7,11 @@ import Home from './components/common/Home'
 import CharactersContextProvider from './contexts/CharactersContext'
 import CounterDeathsContextProvider from './contexts/CounterDeathsContext'
 import QuoteContextProvider from './contexts/QuoteContext'
-import Loader from './components/common/Loader'
 import NotFound from './components/common/NotFound'
+
+import Characters from './components/characters/Characters'
+import Quotes from './components/quotes/Quotes'
+import CounterDeaths from './components/deaths/Counter-Deaths'
 
 import '../public/favicon.ico'
 import './assets/scss/layout.scss'
@@ -21,9 +24,9 @@ const Container = styled.div`
   height: 100vh;
 `
 
-const Characters = lazy(() => import('./components/characters/Characters'))
+/* const Characters = lazy(() => import('./components/characters/Characters'))
 const Quotes = lazy(() => import('./components/quotes/Quotes'))
-const CounterDeaths = lazy(() => import('./components/deaths/Counter-Deaths'))
+const CounterDeaths = lazy(() => import('./components/deaths/Counter-Deaths')) */
 
 const App = () => {
   const { location } = useRouter()
@@ -36,39 +39,31 @@ const App = () => {
   return (
     <Container>
       <Header />
-      <Suspense
-        fallback={
-          <div>
-            <Loader />
-          </div>
-        }
-      >
-        {transitions.map(({ item, props, key }) => (
-          <animated.div key={key} style={props}>
-            <Switch location={item}>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-              <Route exact path='/characters'>
-                <CharactersContextProvider>
-                  <Characters />
-                </CharactersContextProvider>
-              </Route>
-              <Route exact path='/deaths'>
-                <CounterDeathsContextProvider>
-                  <CounterDeaths />
-                </CounterDeathsContextProvider>
-              </Route>
-              <Route exact path='/quotes'>
-                <QuoteContextProvider>
-                  <Quotes />
-                </QuoteContextProvider>
-              </Route>
-              <Route component={NotFound} />
-            </Switch>
-          </animated.div>
-        ))}
-      </Suspense>
+      {transitions.map(({ item, props, key }) => (
+        <animated.div key={key} style={props}>
+          <Switch location={item}>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route exact path='/characters'>
+              <CharactersContextProvider>
+                <Characters />
+              </CharactersContextProvider>
+            </Route>
+            <Route exact path='/deaths'>
+              <CounterDeathsContextProvider>
+                <CounterDeaths />
+              </CounterDeathsContextProvider>
+            </Route>
+            <Route exact path='/quotes'>
+              <QuoteContextProvider>
+                <Quotes />
+              </QuoteContextProvider>
+            </Route>
+            <Route component={NotFound} />
+          </Switch>
+        </animated.div>
+      ))}
     </Container>
   )
 }
